@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Street Car Racing</title>
+    <link rel="stylesheet" href="./index.css" />
+    <!-- <script src="game.js" type="module"></script> -->
+    <!-- <script src="./js/index.js"></script> -->
+    <script src="./js/index.js" type="module"></script>
+  </head>
+  <body>
+    <canvas id="canvas" width="512" height="850"></canvas>
+
+    <!-- <div class="game"> -->
+    <div class="player">
+      <div class="intro">
+        <img src="./images/interface-items/cup.png" alt="" class="trofeu" />
+        <h2 class="title">Road Fighter</h2>
+        <img
+          src="./images/interface-items/img_finish.png"
+          alt=""
+          class="finish"
+        />
+      </div>
+      <div class="final">
+        <form action="" class="jogador">
+          <h2 class="title">Criar Jogador:</h2>
+          <input
+            type="text"
+            class="playername"
+            placeholder="Digite seu nome jogador..."
+          />
+          <input type="submit" class="btnjogar" value="Jogar" />
+        </form>
+
+        <div class="controls">
+          <h2 class="title">Controles Do Jogo</h2>
+          <img
+            src="./images/interface-items/arrows.png"
+            alt=""
+            class="arrows"
+          />
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+
+    <div id="scoreboard">
+      <div class="inner-board">
+        <div class="fuel-meter meter-box">
+          <div class="label">FUEL</div>
+          <div class="fuel-level-container">
+            <div class="fuel-level"></div>
+          </div>
+        </div>
+        <!-- end of fuel-meter -->
+
+        <div class="time-meter meter-box">
+          <div class="label">
+            TIME LAPS:-
+          </div>
+          <div class="time">
+            00:00:00
+          </div>
+        </div>
+        <!-- end of time-meter -->
+
+        <div class="speedo-meter meter-box">
+          <div class="speed">
+            0
+          </div>
+          <div class="unit">
+            KM/h
+          </div>
+        </div>
+        <!-- end of speedo-meter -->
+
+        <!-- player -->
+        <div class="player-meter meter-box">
+          <div>Player: <span class="displayname"></span></div>
+        </div>
+
+        <div class="distance-meter meter-box">
+          <div class="distance">
+            10 KMs
+          </div>
+          <label>
+            LEFT
+          </label>
+        </div>
+        <!-- end of distance-meter -->
+
+        <div class="messages">
+          <div class="try-again">
+            <div class="text">
+              <h2>press spacebar</h2>
+              <h2>to</h2>
+              <h2>Try Again</h2>
+            </div>
+            <div class="crashcar"></div>
+          </div>
+        </div>
+        <!-- end of messages -->
+      </div>
+    </div>
+  </body>
+</html>

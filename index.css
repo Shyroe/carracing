@@ -1,0 +1,314 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 62.5%;
+}
+
+/* Responsividade */
+
+@media only screen and (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    html {
+        font-size: 50%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    html {
+        font-size: 45%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    html {
+        font-size: 35%;
+        /* font-size: 60%; */
+    }
+    .player {
+        display: flex;
+        flex-flow: column nowrap;
+        height: auto;
+        padding: 15% 0;
+        overflow-y: auto;
+    }
+    .player .intro {
+        display: flex;
+        flex-flow: column nowrap;
+        /* height: 40rem; */
+    }
+    .intro .trofeu, .intro .finish {
+        width: 15rem;
+        height: 15rem;
+    }
+    .player .final {
+        display: flex;
+        flex-flow: column nowrap;
+        margin-top: 10rem;
+    }
+    .jogador {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+    }
+    .controls {
+        display: flex;
+        flex-flow: column nowrap;
+        /* justify-content: center; */
+        align-items: center;
+    }
+    .arrows {
+        width: 50rem;
+        height: 40rem;
+    }
+}
+
+#canvas {
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* game interface */
+
+.player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+    overflow-y: hidden;
+    transition: all .5s;
+}
+
+.close {
+    /* top: -100%;
+    left: 0%; */
+    opacity: 0;
+}
+
+.player .intro {
+    height: 10rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 7rem 0;
+}
+
+.title {
+    font-size: 6rem;
+    color: #333;
+    font-weight: bold;
+    line-height: 6rem;
+    border-bottom: 1.5rem solid goldenrod;
+    margin-bottom: 4rem;
+}
+
+.trofeu, .finish {
+    width: 20rem;
+    height: 20rem;
+}
+
+/* final */
+
+.player .final {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    /* align-items: center; */
+}
+
+.final .jogador {
+    padding: 7% 5%;
+    display: flex;
+    /* flex: 0 0 30%; */
+    flex-flow: column nowrap;
+}
+
+.final .jogador .playername {
+    width: 40rem;
+    height: 5rem;
+    align-self: center;
+    border-radius: 10rem;
+    border: none;
+    margin-bottom: 4rem;
+    padding: 1rem 3rem;
+}
+
+.final .jogador .playername:focus {
+    outline: none;
+    border: 3px solid goldenrod;
+    color: #333;
+}
+
+.final .jogador .btnjogar {
+    padding: 5px 5rem;
+    display: inline-block;
+    border: none;
+    align-self: center;
+    border-radius: 5rem;
+    background-color: green;
+    /* border: 5px solid white; */
+    color: white;
+    font-size: 2.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.final .jogador .btnjogar:hover {
+    border: transparent;
+    background-color: goldenrod;
+}
+
+.player .final .controls {
+    padding: 7% 0px;
+}
+
+/* jogo */
+
+#scoreboard {
+    width: 512px;
+    height: 850px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-y: hidden;
+}
+
+#scoreboard .inner-board {
+    width: inherit;
+    height: inherit;
+    position: relative;
+}
+
+#scoreboard .inner-board .fuel-meter {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+}
+
+#scoreboard .inner-board .fuel-meter .fuel-level-container {
+    width: 100px;
+    padding: 0 5px;
+}
+
+#scoreboard .inner-board .fuel-meter .fuel-level-container .fuel-level {
+    width: 50px;
+    height: 20px;
+    background-color: green;
+}
+
+/* player */
+
+#scoreboard .inner-board .player-meter {
+    position: absolute;
+    top: 100px;
+    left: 10px;
+    display: flex;
+}
+
+.meter-box {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* Time Laps */
+
+#scoreboard .inner-board .time-meter {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: flex;
+}
+
+#scoreboard .inner-board .time-meter .label {
+    margin-right: 10px;
+}
+
+/* Speedo meter */
+
+#scoreboard .inner-board .speedo-meter {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    display: flex;
+}
+
+#scoreboard .inner-board .speedo-meter .speed {
+    width: 30px;
+    text-align: right;
+}
+
+#scoreboard .inner-board .speedo-meter .unit {
+    margin-left: 5px;
+}
+
+/* Distance meter */
+
+#scoreboard .inner-board .distance-meter {
+    position: absolute;
+    right: 10px;
+    top: 50px;
+    display: flex;
+}
+
+#scoreboard .inner-board .distance-meter .distance {
+    margin-right: 10px;
+}
+
+/* Messages and try-again */
+
+#scoreboard .inner-board .messages {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: inherit;
+    height: inherit;
+}
+
+#scoreboard .inner-board .messages .try-again {
+    width: inherit;
+    height: inherit;
+    display: none;
+}
+
+#scoreboard .inner-board .messages .try-again .text {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+#scoreboard .inner-board .messages .try-again .text h2 {
+    text-transform: capitalize;
+    /* color: crimson; */
+    color: white;
+    font-weight: bold;
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+#scoreboard .inner-board .messages .try-again .crashcar {
+    background-image: url('./images/crashCar/crash.png');
+    width: inherit;
+    height: inherit;
+}
